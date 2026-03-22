@@ -1,0 +1,246 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WalletCard from '../components/WalletCard.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import { wallets, getTopWallets } from '../content/wallets';
+
+const topWallets = getTopWallets(3);
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wo kann ich einen Trezor in der Schweiz kaufen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Am sichersten kaufst du deinen Trezor direkt im offiziellen Trezor Online-Shop (shop.trezor.io). Die Lieferung in die Schweiz dauert 3-7 Werktage. Kaufe niemals gebrauchte Hardware Wallets oder bei nicht-autorisierten Händlern."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was ist ein Hardware Wallet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ein Hardware Wallet ist ein physisches Gerät, das deine privaten Schlüssel offline speichert. Es schützt deine Kryptowährungen vor Hackern, Malware und Online-Angriffen, da die Schlüssel niemals mit dem Internet verbunden sind."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welcher Trezor ist der beste 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unser Testsieger 2026 ist der Trezor Safe 5 mit einer Bewertung von 9.5/10. Er bietet einen Farb-Touchscreen, EAL6+ Secure Element Chip und vollständige Open-Source-Transparenz. Für Budget-Käufer empfehlen wir den Trezor Safe 3 (9.0/10)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ist der Trezor sicher?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, Trezor-Geräte gehören zu den sichersten Hardware Wallets auf dem Markt. Die neueren Modelle (Safe 3, Safe 5) verwenden EAL6+ Secure Element Chips. Die Firmware ist vollständig Open Source und wird regelmässig von Sicherheitsforschern geprüft."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Trezor oder Ledger – was ist besser?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Beide sind exzellente Hersteller. Trezor punktet mit Open-Source-Transparenz und Touchscreen-Bedienung. Ledger bietet Bluetooth-Konnektivität und eine native Mobile-App. Für Schweizer Nutzer, die Transparenz schätzen, empfehlen wir Trezor."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Trezor Wallet kaufen Schweiz 2026 – Test, Vergleich & Erfahrungen | TrezorKaufen.ch"
+  description="Trezor Hardware Wallet kaufen in der Schweiz: Unabhängiger Vergleich 2026 von Trezor Safe 5, Safe 3, Ledger & BitBox. Testberichte, Preise & sichere Kaufberatung."
+  jsonLd={faqSchema}
+>
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(0,133,77,0.1)_0%,_transparent_60%)]"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="inline-block bg-trezor-500/10 border border-trezor-500/20 text-trezor-400 text-xs font-semibold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
+          Aktualisiert: März 2026
+        </span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-6">
+          <span class="text-trezor-400">Trezor Wallet</span> kaufen Schweiz
+        </h1>
+        <p class="text-lg text-gray-300 leading-relaxed mb-8">
+          Schütze deine Kryptowährungen mit einem Trezor Hardware Wallet. Wir haben alle aktuellen Modelle getestet und mit Ledger und BitBox verglichen &ndash; unabhängig, ehrlich und speziell für die Schweiz.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="#vergleich" class="cta-button bg-trezor-500 hover:bg-trezor-400 text-white font-semibold py-3 px-6 rounded-lg text-sm">
+            Zum Vergleich
+          </a>
+          <a href="/ratgeber/trezor-einrichten" class="border border-navy-600 hover:border-trezor-500/50 text-gray-300 hover:text-trezor-400 font-medium py-3 px-6 rounded-lg text-sm transition-colors">
+            Trezor einrichten
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top 3 Wallets -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {topWallets.map((wallet, index) => (
+        <WalletCard wallet={wallet} featured={index === 0} />
+      ))}
+    </div>
+  </section>
+
+  <!-- Trust Indicators -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="bg-navy-800/50 border border-navy-700/50 rounded-lg p-4 text-center">
+        <div class="text-2xl font-bold text-trezor-400">8</div>
+        <div class="text-xs text-gray-400 mt-1">Wallets getestet</div>
+      </div>
+      <div class="bg-navy-800/50 border border-navy-700/50 rounded-lg p-4 text-center">
+        <div class="text-2xl font-bold text-trezor-400">40+</div>
+        <div class="text-xs text-gray-400 mt-1">Stunden Recherche</div>
+      </div>
+      <div class="bg-navy-800/50 border border-navy-700/50 rounded-lg p-4 text-center">
+        <div class="text-2xl font-bold text-trezor-400">9.000+</div>
+        <div class="text-xs text-gray-400 mt-1">Unterstützte Coins</div>
+      </div>
+      <div class="bg-navy-800/50 border border-navy-700/50 rounded-lg p-4 text-center">
+        <div class="text-2xl font-bold text-trezor-400">100%</div>
+        <div class="text-xs text-gray-400 mt-1">Unabhängig</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Hardware Wallet -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="bg-gradient-to-r from-red-500/10 to-amber-500/10 border border-red-500/20 rounded-xl p-6 sm:p-8">
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0 w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+        </div>
+        <div>
+          <h2 class="text-xl font-bold text-white mb-2">Warum du JETZT ein Hardware Wallet brauchst</h2>
+          <p class="text-gray-300 text-sm leading-relaxed mb-4">
+            Allein im Jahr 2025 wurden bei Krypto-Börsen über <strong class="text-red-400">$2 Milliarden</strong> gestohlen. Der Bybit-Hack im Februar 2025 war mit $1.5 Milliarden der grösste einzelne Krypto-Diebstahl aller Zeiten. FTX, Mt. Gox, Bitfinex &ndash; die Liste gehackter und insolventer Börsen wird jedes Jahr länger.
+          </p>
+          <p class="text-gray-300 text-sm leading-relaxed mb-4">
+            <strong class="text-amber-400">&laquo;Not your keys, not your coins&raquo;</strong> &ndash; ein Trezor Hardware Wallet kostet ab CHF 79 und schützt deine Kryptowährungen zuverlässig vor Hackern, Betrug und Börsen-Insolvenzen.
+          </p>
+          <a href="/ratgeber/gehackte-boersen" class="inline-flex items-center gap-1 text-trezor-400 hover:text-trezor-500 text-sm font-medium transition-colors">
+            Alle gehackten Börsen ansehen
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full Comparison Table -->
+  <section id="vergleich" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Alle Hardware Wallets im Vergleich</h2>
+      <p class="text-gray-400 text-sm max-w-2xl mx-auto">Sortiert nach Bewertung. Klicke auf ein Wallet für den ausführlichen Testbericht.</p>
+    </div>
+    <div class="bg-navy-800 border border-navy-700 rounded-xl overflow-hidden">
+      <ComparisonTable />
+    </div>
+    <div class="text-center mt-4">
+      <a href="/vergleich" class="inline-flex items-center gap-1 text-trezor-400 hover:text-trezor-500 text-sm font-medium transition-colors">
+        Detaillierten Vergleich ansehen
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- All Wallet Cards -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <h2 class="text-2xl font-bold text-white mb-6">Alle Testberichte</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      {wallets.map((wallet) => (
+        <WalletCard wallet={wallet} />
+      ))}
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h2 class="text-2xl font-bold text-white mb-6 text-center">Häufig gestellte Fragen</h2>
+    <div class="space-y-4">
+      <details class="bg-navy-800 border border-navy-700 rounded-lg group" open>
+        <summary class="flex items-center justify-between p-4 cursor-pointer text-white font-medium text-sm">
+          Wo kann ich einen Trezor in der Schweiz kaufen?
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+        </summary>
+        <div class="px-4 pb-4 text-gray-300 text-sm leading-relaxed">
+          Am sichersten kaufst du deinen Trezor direkt im offiziellen Trezor Online-Shop (shop.trezor.io). Die Lieferung in die Schweiz dauert 3-7 Werktage. Kaufe niemals gebrauchte Hardware Wallets oder bei nicht-autorisierten Händlern.
+        </div>
+      </details>
+
+      <details class="bg-navy-800 border border-navy-700 rounded-lg group">
+        <summary class="flex items-center justify-between p-4 cursor-pointer text-white font-medium text-sm">
+          Welcher Trezor ist der beste 2026?
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+        </summary>
+        <div class="px-4 pb-4 text-gray-300 text-sm leading-relaxed">
+          Unser Testsieger 2026 ist der Trezor Safe 5 mit einer Bewertung von 9.5/10. Er bietet einen Farb-Touchscreen, EAL6+ Secure Element Chip und vollständige Open-Source-Transparenz. Für Budget-Käufer empfehlen wir den Trezor Safe 3 (9.0/10).
+        </div>
+      </details>
+
+      <details class="bg-navy-800 border border-navy-700 rounded-lg group">
+        <summary class="flex items-center justify-between p-4 cursor-pointer text-white font-medium text-sm">
+          Ist der Trezor sicher?
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+        </summary>
+        <div class="px-4 pb-4 text-gray-300 text-sm leading-relaxed">
+          Ja, Trezor-Geräte gehören zu den sichersten Hardware Wallets auf dem Markt. Die neueren Modelle (Safe 3, Safe 5) verwenden EAL6+ Secure Element Chips. Die Firmware ist vollständig Open Source und wird regelmässig von Sicherheitsforschern geprüft.
+        </div>
+      </details>
+
+      <details class="bg-navy-800 border border-navy-700 rounded-lg group">
+        <summary class="flex items-center justify-between p-4 cursor-pointer text-white font-medium text-sm">
+          Trezor oder Ledger – was ist besser?
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+        </summary>
+        <div class="px-4 pb-4 text-gray-300 text-sm leading-relaxed">
+          Beide sind exzellente Hersteller. Trezor punktet mit Open-Source-Transparenz und Touchscreen-Bedienung. Ledger bietet Bluetooth-Konnektivität und eine native Mobile-App. Für Schweizer Nutzer, die Transparenz schätzen, empfehlen wir Trezor.
+        </div>
+      </details>
+
+      <details class="bg-navy-800 border border-navy-700 rounded-lg group">
+        <summary class="flex items-center justify-between p-4 cursor-pointer text-white font-medium text-sm">
+          Was kostet ein Trezor Hardware Wallet?
+          <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+        </summary>
+        <div class="px-4 pb-4 text-gray-300 text-sm leading-relaxed">
+          Trezor Model One ab CHF 59, Trezor Safe 3 ab CHF 79 und Trezor Safe 5 ab CHF 169. Alle Preise inklusive Versand in die Schweiz über den offiziellen Trezor-Shop.
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="bg-gradient-to-r from-trezor-500/10 to-trezor-600/10 border border-trezor-500/20 rounded-xl p-8 text-center">
+      <h2 class="text-xl sm:text-2xl font-bold text-white mb-3">Bereit, deine Krypto zu sichern?</h2>
+      <p class="text-gray-300 text-sm mb-6 max-w-lg mx-auto">
+        Warte nicht, bis es zu spät ist. Sichere deine Kryptowährungen noch heute mit einem Trezor Hardware Wallet.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="https://shop.trezor.io/product/trezor-model-t?offer_id=15&aff_id=9410&source=trezorkaufen.ch" rel="nofollow sponsored" target="_blank" class="cta-button bg-trezor-500 hover:bg-trezor-400 text-white font-semibold py-3 px-6 rounded-lg text-sm">
+          Testsieger Trezor Safe 5 kaufen
+        </a>
+        <a href="/vergleich" class="border border-trezor-500/30 text-trezor-400 hover:bg-trezor-500/10 font-medium py-3 px-6 rounded-lg text-sm transition-colors">
+          Alle Wallets vergleichen
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

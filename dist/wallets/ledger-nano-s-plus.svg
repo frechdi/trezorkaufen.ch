@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
+  <rect x="32" y="42" width="56" height="26" rx="5" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+  <rect x="38" y="48" width="22" height="14" rx="2" fill="#475569" opacity="0.3"/>
+  <text x="49" y="58" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#94a3b8">S PLUS</text>
+  <text x="60" y="110" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#94a3b8">Ledger</text>
+</svg>

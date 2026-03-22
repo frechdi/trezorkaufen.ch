@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import WalletCard from '../components/WalletCard.astro';
+import { wallets, comparisons } from '../content/wallets';
+
+const breadcrumbs = [
+  { name: "Home", url: "/" },
+  { name: "Vergleich", url: "/vergleich" }
+];
+---
+
+<BaseLayout
+  title="Hardware Wallet Vergleich 2026 – Trezor, Ledger & BitBox im Test | TrezorKaufen.ch"
+  description="Vergleiche die 8 besten Hardware Wallets 2026: Trezor Safe 5, Safe 3, Ledger Nano X, BitBox02 & mehr. Preis, Sicherheit, Features & Bewertung auf einen Blick."
+  breadcrumbs={breadcrumbs}
+>
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="text-center mb-8">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Hardware Wallet Vergleich 2026</h1>
+      <p class="text-gray-400 max-w-2xl mx-auto">Alle 8 getesteten Hardware Wallets im direkten Vergleich. Sortiert nach unserer Bewertung – mit Fokus auf Trezor-Modelle für die Schweiz.</p>
+    </div>
+
+    <!-- Main Table -->
+    <div class="bg-navy-800 border border-navy-700 rounded-xl overflow-hidden mb-12">
+      <ComparisonTable />
+    </div>
+
+    <!-- Detailed Specs -->
+    <div class="mb-12">
+      <h2 class="text-2xl font-bold text-white mb-6">Detaillierter Spezifikationsvergleich</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-navy-700 bg-navy-800">
+              <th class="text-left py-3 px-4 text-gray-400 font-medium sticky left-0 bg-navy-800">Eigenschaft</th>
+              {wallets.slice(0, 6).map(w => (
+                <th class="text-center py-3 px-3 text-gray-400 font-medium min-w-[120px]">
+                  <a href={`/${w.slug}`} class="hover:text-trezor-400 transition-colors">{w.name}</a>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-navy-700/50">
+            <tr>
+              <td class="py-2.5 px-4 text-gray-300 font-medium sticky left-0 bg-navy-900">Preis</td>
+              {wallets.slice(0, 6).map(w => (
+                <td class="text-center py-2.5 px-3 text-white font-medium">{w.price}</td>
+              ))}
+            </tr>
+            <tr>
+              <td class="py-2.5 px-4 text-gray-300 font-medium sticky left-0 bg-navy-900">Bewertung</td>
+              {wallets.slice(0, 6).map(w => (
+                <td class="text-center py-2.5 px-3 text-amber-400 font-bold">{w.rating}/10</td>
+              ))}
+            </tr>
+            <tr>
+              <td class="py-2.5 px-4 text-gray-300 font-medium sticky left-0 bg-navy-900">Coins</td>
+              {wallets.slice(0, 6).map(w => (
+                <td class="text-center py-2.5 px-3 text-gray-300">{w.specs.coins}</td>
+              ))}
+            </tr>
+            <tr>
+              <td class="py-2.5 px-4 text-gray-300 font-medium sticky left-0 bg-navy-900">Bluetooth</td>
+              {wallets.slice(0, 6).map(w => (
+                <td class="text-center py-2.5 px-3">
+                  <span class={w.specs.bluetooth ? 'text-trezor-400' : 'text-gray-600'}>{w.specs.bluetooth ? '&#10003;' : '&#10005;'}</span>
+                </td>
+              ))}
+            </tr>
+            <tr>
+              <td class="py-2.5 px-4 text-gray-300 font-medium sticky left-0 bg-navy-900">Touchscreen</td>
+              {wallets.slice(0, 6).map(w => (
+                <td class="text-center py-2.5 px-3">
+                  <span class={w.specs.touchscreen ? 'text-trezor-400' : 'text-gray-600'}>{w.specs.touchscreen ? '&#10003;' : '&#10005;'}</span>
+                </td>
+              ))}
+            </tr>
+            <tr>
+              <td class="py-2.5 px-4 text-gray-300 font-medium sticky left-0 bg-navy-900">Open Source</td>
+              {wallets.slice(0, 6).map(w => (
+                <td class="text-center py-2.5 px-3">
+                  <span class={w.specs.openSource ? 'text-trezor-400' : 'text-gray-600'}>{w.specs.openSource ? '&#10003;' : '&#10005;'}</span>
+                </td>
+              ))}
+            </tr>
+            <tr>
+              <td class="py-2.5 px-4 text-gray-300 font-medium sticky left-0 bg-navy-900">Sicherheitschip</td>
+              {wallets.slice(0, 6).map(w => (
+                <td class="text-center py-2.5 px-3 text-gray-300 text-xs">{w.specs.securityChip}</td>
+              ))}
+            </tr>
+            <tr>
+              <td class="py-2.5 px-4 text-gray-300 font-medium sticky left-0 bg-navy-900">Gewicht</td>
+              {wallets.slice(0, 6).map(w => (
+                <td class="text-center py-2.5 px-3 text-gray-300">{w.specs.weight}</td>
+              ))}
+            </tr>
+            <tr>
+              <td class="py-2.5 px-4 text-gray-300 font-medium sticky left-0 bg-navy-900">Anschluss</td>
+              {wallets.slice(0, 6).map(w => (
+                <td class="text-center py-2.5 px-3 text-gray-300 text-xs">{w.specs.connectivity}</td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Head-to-Head Comparisons -->
+    <div class="mb-12">
+      <h2 class="text-2xl font-bold text-white mb-6">Direktvergleiche</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {comparisons.map(comp => (
+          <a href={`/vergleich/${comp.slug}`} class="bg-navy-800 border border-navy-700 rounded-xl p-5 hover:border-trezor-500/30 transition-colors group">
+            <h3 class="text-white font-semibold group-hover:text-trezor-400 transition-colors mb-2 text-sm">{comp.title}</h3>
+            <p class="text-gray-400 text-xs line-clamp-2">{comp.intro}</p>
+            <span class="inline-flex items-center gap-1 text-trezor-400 text-xs font-medium mt-3">
+              Vergleich lesen
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- All Wallet Cards -->
+    <div>
+      <h2 class="text-2xl font-bold text-white mb-6">Alle Testberichte</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {wallets.map(wallet => (
+          <WalletCard wallet={wallet} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const breadcrumbs = [
+  { name: "Home", url: "/" },
+  { name: "Disclaimer", url: "/disclaimer" }
+];
+---
+
+<BaseLayout
+  title="Disclaimer | TrezorKaufen.ch"
+  description="Haftungsausschluss und Hinweise zu Affiliate-Links auf TrezorKaufen.ch. Transparenz ist uns wichtig."
+  breadcrumbs={breadcrumbs}
+>
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <h1 class="text-3xl font-extrabold text-white mb-6">Disclaimer</h1>
+
+    <div class="space-y-6 text-gray-300 text-sm leading-relaxed">
+      <div>
+        <h2 class="text-lg font-bold text-white mb-2">Keine Finanzberatung</h2>
+        <p>Die Inhalte auf TrezorKaufen.ch dienen ausschliesslich zu Informationszwecken und stellen keine Finanzberatung, Anlageberatung oder sonstige Beratung dar. Wir empfehlen dir, vor jeder Investitionsentscheidung einen qualifizierten Finanzberater zu konsultieren. Die Nutzung der bereitgestellten Informationen erfolgt auf eigene Verantwortung.</p>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-white mb-2">Affiliate-Offenlegung</h2>
+        <p>TrezorKaufen.ch nimmt an Affiliate-Partnerprogrammen teil, insbesondere von Trezor (SatoshiLabs), Ledger, Shift Crypto (BitBox) und Amazon. Wenn du über einen Affiliate-Link auf unserer Website ein Produkt kaufst, erhalten wir eine Provision. Der Kaufpreis ändert sich für dich dadurch nicht.</p>
+        <p class="mt-2">Unsere Testberichte und Bewertungen werden unabhängig erstellt und nicht durch Affiliate-Partnerschaften beeinflusst. Wir bewerten alle Produkte nach denselben Kriterien, unabhängig davon, ob eine Affiliate-Partnerschaft besteht.</p>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-white mb-2">Produktinformationen und Preise</h2>
+        <p>Wir bemühen uns, alle Produktinformationen und Preise aktuell und korrekt zu halten. Dennoch können sich Preise, Verfügbarkeit und Spezifikationen jederzeit ändern. Verbindlich sind ausschliesslich die Angaben auf der jeweiligen Produktseite des Herstellers oder Händlers. Alle Preisangaben auf TrezorKaufen.ch verstehen sich als ungefähre Richtwerte.</p>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-white mb-2">Bewertungen und Tests</h2>
+        <p>Unsere Bewertungen basieren auf eigenen Tests, Recherche und Erfahrung. Sie stellen unsere subjektive Einschätzung dar und können von den Erfahrungen anderer Nutzer abweichen. Bewertungen werden nach bestem Wissen und Gewissen erstellt, erheben aber keinen Anspruch auf Vollständigkeit oder absolute Objektivität.</p>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-white mb-2">Kryptowährungs-Risiken</h2>
+        <p>Investitionen in Kryptowährungen sind mit erheblichen Risiken verbunden, einschliesslich des Risikos des Totalverlustes. Ein Hardware Wallet schützt vor Diebstahl und Hacks, kann aber keinen Schutz vor Kursverlusten bieten. Investiere nur Beträge, die du bereit bist zu verlieren.</p>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-white mb-2">Markenzeichen</h2>
+        <p>Trezor ist eine eingetragene Marke von SatoshiLabs s.r.o. Ledger ist eine eingetragene Marke von Ledger SAS. BitBox ist eine eingetragene Marke von Shift Crypto AG. Alle anderen Marken gehören ihren jeweiligen Eigentümern. TrezorKaufen.ch ist kein offizieller Partner oder autorisierter Händler dieser Unternehmen, sofern nicht ausdrücklich angegeben.</p>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

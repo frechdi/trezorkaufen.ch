@@ -1,0 +1,70 @@
+---
+import { wallets } from '../content/wallets';
+
+const sortedWallets = [...wallets].sort((a, b) => b.rating - a.rating);
+---
+
+<div class="overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead>
+      <tr class="border-b border-navy-700">
+        <th class="text-left py-3 px-4 text-gray-400 font-medium">Wallet</th>
+        <th class="text-center py-3 px-3 text-gray-400 font-medium">Bewertung</th>
+        <th class="text-center py-3 px-3 text-gray-400 font-medium">Preis</th>
+        <th class="text-center py-3 px-3 text-gray-400 font-medium hidden sm:table-cell">Bluetooth</th>
+        <th class="text-center py-3 px-3 text-gray-400 font-medium hidden sm:table-cell">Touchscreen</th>
+        <th class="text-center py-3 px-3 text-gray-400 font-medium hidden md:table-cell">Open Source</th>
+        <th class="text-center py-3 px-3 text-gray-400 font-medium hidden md:table-cell">Coins</th>
+        <th class="text-center py-3 px-3 text-gray-400 font-medium">Kaufen</th>
+      </tr>
+    </thead>
+    <tbody>
+      {sortedWallets.map((wallet, index) => (
+        <tr class={`border-b border-navy-700/50 hover:bg-navy-700/20 transition-colors ${index === 0 ? 'bg-trezor-500/5' : ''}`}>
+          <td class="py-3 px-4">
+            <a href={`/${wallet.slug}`} class="flex items-center gap-3 hover:text-trezor-400 transition-colors">
+              <img src={wallet.image} alt={wallet.name} class="w-8 h-8 object-contain hidden sm:block" loading="lazy" />
+              <div>
+                <span class="text-white font-medium block">{wallet.name}</span>
+                <span class="text-gray-500 text-xs">{wallet.brand}</span>
+              </div>
+            </a>
+          </td>
+          <td class="text-center py-3 px-3">
+            <span class={`font-bold ${wallet.rating >= 9 ? 'text-trezor-400' : wallet.rating >= 8.5 ? 'text-amber-400' : 'text-gray-300'}`}>
+              {wallet.rating}/10
+            </span>
+          </td>
+          <td class="text-center py-3 px-3 text-white font-medium">{wallet.price}</td>
+          <td class="text-center py-3 px-3 hidden sm:table-cell">
+            {wallet.specs.bluetooth ? (
+              <span class="text-trezor-400">&#10003;</span>
+            ) : (
+              <span class="text-gray-600">&#10005;</span>
+            )}
+          </td>
+          <td class="text-center py-3 px-3 hidden sm:table-cell">
+            {wallet.specs.touchscreen ? (
+              <span class="text-trezor-400">&#10003;</span>
+            ) : (
+              <span class="text-gray-600">&#10005;</span>
+            )}
+          </td>
+          <td class="text-center py-3 px-3 hidden md:table-cell">
+            {wallet.specs.openSource ? (
+              <span class="text-trezor-400">&#10003;</span>
+            ) : (
+              <span class="text-gray-600">&#10005;</span>
+            )}
+          </td>
+          <td class="text-center py-3 px-3 hidden md:table-cell text-gray-300">{wallet.specs.coins}</td>
+          <td class="text-center py-3 px-3">
+            <a href={wallet.affiliateUrl} rel="nofollow sponsored" target="_blank" class="inline-block bg-trezor-500 hover:bg-trezor-400 text-white font-semibold py-1.5 px-3 rounded-lg text-xs transition-colors whitespace-nowrap">
+              Kaufen
+            </a>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

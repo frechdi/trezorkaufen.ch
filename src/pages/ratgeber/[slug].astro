@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { guides, getGuideBySlug } from '../../content/wallets';
+
+export function getStaticPaths() {
+  return guides.map(guide => ({
+    params: { slug: guide.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const guide = getGuideBySlug(slug as string)!;
+
+const breadcrumbs = [
+  { name: "Home", url: "/" },
+  { name: "Ratgeber", url: "/ratgeber/trezor-einrichten" },
+  { name: guide.title.split('–')[0].trim(), url: `/ratgeber/${guide.slug}` }
+];
+
+const schemas: any[] = [];
+
+schemas.push({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": guide.title,
+  "datePublished": "2026-03-01",
+  "dateModified": "2026-03-22",
+  "author": { "@type": "Organization", "name": "TrezorKaufen.ch" },
+  "publisher": { "@type": "Organization", "name": "TrezorKaufen.ch" }
+});
+
+if (guide.faqs.length > 0) {
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": guide.faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  });
+}
+---
+
+<BaseLayout
+  title={guide.metaTitle}
+  description={guide.metaDesc}
+  ogType="article"
+  jsonLd={schemas}
+  breadcrumbs={breadcrumbs}
+>
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-6">{guide.title}</h1>
+    <p class="text-gray-300 leading-relaxed text-lg mb-8 border-l-4 border-trezor-500/50 pl-4">{guide.intro}</p>
+
+    <!-- Table of Contents -->
+    <div class="bg-navy-800 border border-navy-700 rounded-xl p-5 mb-8">
+      <h2 class="text-white font-semibold mb-3 text-sm">Inhalt</h2>
+      <ol class="space-y-1.5">
+        {guide.sections.map((section, index) => (
+          <li>
+            <a href={`#section-${index}`} class="text-trezor-400 hover:text-trezor-500 text-sm transition-colors">
+              {index + 1}. {section.heading}
+            </a>
+          </li>
+        ))}
+        {guide.faqs.length > 0 && (
+          <li>
+            <a href="#faq" class="text-trezor-400 hover:text-trezor-500 text-sm transition-colors">
+              {guide.sections.length + 1}. Häufig gestellte Fragen
+            </a>
+          </li>
+        )}
+      </ol>
+    </div>
+
+    <!-- Content Sections -->
+    {guide.sections.map((section, index) => (
+      <div id={`section-${index}`} class="mb-8 scroll-mt-20">
+        <h2 class="text-xl font-bold text-white mb-3">{section.heading}</h2>
+        <p class="text-gray-300 text-sm leading-relaxed">{section.content}</p>
+      </div>
+    ))}
+
+    <!-- FAQ Section -->
+    {guide.faqs.length > 0 && (
+      <div id="faq" class="scroll-mt-20 mb-8">
+        <h2 class="text-xl font-bold text-white mb-4">Häufig gestellte Fragen</h2>
+        <div class="space-y-3">
+          {guide.faqs.map(faq => (
+            <details class="bg-navy-800 border border-navy-700 rounded-lg group">
+              <summary class="flex items-center justify-between p-4 cursor-pointer text-white font-medium text-sm">
+                {faq.question}
+                <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <div class="px-4 pb-4 text-gray-300 text-sm leading-relaxed">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- CTA -->
+    <div class="bg-gradient-to-r from-trezor-500/10 to-trezor-600/10 border border-trezor-500/20 rounded-xl p-6 text-center">
+      <h2 class="text-lg font-bold text-white mb-2">Bereit für deinen Trezor?</h2>
+      <p class="text-gray-300 text-sm mb-4">Vergleiche die besten Hardware Wallets und finde das passende Modell.</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/vergleich" class="cta-button bg-trezor-500 hover:bg-trezor-400 text-white font-semibold py-2.5 px-5 rounded-lg text-sm">
+          Zum Wallet-Vergleich
+        </a>
+        <a href="https://shop.trezor.io/product/trezor-model-t?offer_id=15&aff_id=9410&source=trezorkaufen.ch" rel="nofollow sponsored" target="_blank" class="border border-trezor-500/30 text-trezor-400 hover:bg-trezor-500/10 font-medium py-2.5 px-5 rounded-lg text-sm transition-colors">
+          Testsieger Trezor Safe 5
+        </a>
+      </div>
+    </div>
+
+    <!-- Related Guides -->
+    <div class="mt-8">
+      <h3 class="text-lg font-bold text-white mb-4">Weitere Ratgeber</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {guides.filter(g => g.slug !== guide.slug).map(g => (
+          <a href={`/ratgeber/${g.slug}`} class="bg-navy-800 border border-navy-700 rounded-lg p-4 hover:border-trezor-500/30 transition-colors group">
+            <span class="text-white font-medium text-sm group-hover:text-trezor-400 transition-colors">{g.title.split('–')[0].trim()}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </article>
+</BaseLayout>

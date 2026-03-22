@@ -1,0 +1,72 @@
+---
+import type { Wallet } from '../content/wallets';
+import StarRating from './StarRating.astro';
+
+interface Props {
+  wallet: Wallet;
+  featured?: boolean;
+}
+
+const { wallet, featured = false } = Astro.props;
+---
+
+<div class={`bg-navy-800 border rounded-xl overflow-hidden transition-all duration-200 hover:border-trezor-500/50 hover:shadow-lg hover:shadow-trezor-500/5 ${featured ? 'border-trezor-500/30' : 'border-navy-700'}`}>
+  {featured && (
+    <div class="bg-trezor-500/10 border-b border-trezor-500/20 px-4 py-1.5 text-center">
+      <span class="text-trezor-400 text-xs font-semibold uppercase tracking-wider">Empfehlung</span>
+    </div>
+  )}
+  <div class="p-6">
+    <!-- Image -->
+    <div class="flex justify-center mb-4">
+      <img src={wallet.image} alt={`${wallet.name} Hardware Wallet`} class="h-24 w-auto" loading="lazy" />
+    </div>
+
+    <!-- Name & Brand -->
+    <div class="text-center mb-3">
+      <h3 class="text-white font-bold text-lg">{wallet.name}</h3>
+      <p class="text-gray-400 text-sm">{wallet.brand}</p>
+    </div>
+
+    <!-- Rating -->
+    <div class="flex items-center justify-center gap-2 mb-3">
+      <StarRating rating={wallet.rating} />
+      <span class="text-amber-400 font-bold text-sm">{wallet.rating}/10</span>
+    </div>
+
+    <!-- Key Specs -->
+    <div class="grid grid-cols-2 gap-2 mb-4 text-xs">
+      <div class="bg-navy-900/50 rounded-lg px-3 py-2 text-center">
+        <span class="text-gray-400 block">Coins</span>
+        <span class="text-white font-medium">{wallet.specs.coins}</span>
+      </div>
+      <div class="bg-navy-900/50 rounded-lg px-3 py-2 text-center">
+        <span class="text-gray-400 block">Bluetooth</span>
+        <span class={`font-medium ${wallet.specs.bluetooth ? 'text-trezor-400' : 'text-gray-500'}`}>{wallet.specs.bluetooth ? 'Ja' : 'Nein'}</span>
+      </div>
+      <div class="bg-navy-900/50 rounded-lg px-3 py-2 text-center">
+        <span class="text-gray-400 block">Touchscreen</span>
+        <span class={`font-medium ${wallet.specs.touchscreen ? 'text-trezor-400' : 'text-gray-500'}`}>{wallet.specs.touchscreen ? 'Ja' : 'Nein'}</span>
+      </div>
+      <div class="bg-navy-900/50 rounded-lg px-3 py-2 text-center">
+        <span class="text-gray-400 block">Open Source</span>
+        <span class={`font-medium ${wallet.specs.openSource ? 'text-trezor-400' : 'text-gray-500'}`}>{wallet.specs.openSource ? 'Ja' : 'Nein'}</span>
+      </div>
+    </div>
+
+    <!-- Price -->
+    <div class="text-center mb-4">
+      <span class="text-2xl font-bold text-white">{wallet.price}</span>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="flex flex-col gap-2">
+      <a href={wallet.affiliateUrl} rel="nofollow sponsored" target="_blank" class="cta-button block w-full text-center bg-trezor-500 hover:bg-trezor-400 text-white font-semibold py-2.5 px-4 rounded-lg text-sm">
+        Jetzt kaufen
+      </a>
+      <a href={`/${wallet.slug}`} class="block w-full text-center border border-navy-600 hover:border-trezor-500/50 text-gray-300 hover:text-trezor-400 font-medium py-2.5 px-4 rounded-lg text-sm transition-colors">
+        Testbericht lesen
+      </a>
+    </div>
+  </div>
+</div>

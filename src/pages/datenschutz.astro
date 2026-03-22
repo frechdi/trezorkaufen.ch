@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const breadcrumbs = [
+  { name: "Home", url: "/" },
+  { name: "Datenschutz", url: "/datenschutz" }
+];
+---
+
+<BaseLayout
+  title="Datenschutzerklärung | TrezorKaufen.ch"
+  description="Datenschutzerklärung von TrezorKaufen.ch: Informationen zur Erhebung, Verarbeitung und Nutzung personenbezogener Daten."
+  breadcrumbs={breadcrumbs}
+>
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <h1 class="text-3xl font-extrabold text-white mb-6">Datenschutzerklärung</h1>
+
+    <div class="space-y-6 text-gray-300 text-sm leading-relaxed">
+      <div>
+        <h2 class="text-lg font-bold text-white mb-2">1. Allgemeine Hinweise</h2>
+        <p>Der Schutz deiner persönlichen Daten ist uns ein besonderes Anliegen. Wir verarbeiten deine Daten daher ausschliesslich auf Grundlage der gesetzlichen Bestimmungen (DSG, DSGVO). In dieser Datenschutzerklärung informieren wir dich über die wichtigsten Aspekte der Datenverarbeitung auf unserer Website.</p>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-white mb-2">2. Verantwortliche Stelle</h2>
+        <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist:<br />filedesign.com<br />E-Mail: info [at] filedesign.com</p>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-white mb-2">3. Hosting</h2>
+        <p>Diese Website wird bei Cloudflare Pages gehostet. Die Server befinden sich weltweit verteilt. Beim Besuch unserer Website werden automatisch Informationen in sogenannten Server-Log-Dateien gespeichert, die dein Browser automatisch übermittelt. Dazu gehören: Browsertyp und -version, verwendetes Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage und IP-Adresse.</p>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-white mb-2">4. Affiliate-Links</h2>
+        <p>Unsere Website enthält Affiliate-Links zu Produkten und Dienstleistungen Dritter (insbesondere Trezor, Ledger, Shift Crypto und Amazon). Wenn du über diese Links ein Produkt kaufst, erhalten wir eine Provision. Die Affiliate-Partner können Cookies setzen, um die Herkunft des Kaufs nachzuverfolgen. Wir haben keinen Einfluss auf die Datenerhebung durch diese Drittanbieter. Bitte informiere dich in den Datenschutzerklärungen der jeweiligen Anbieter.</p>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-white mb-2">5. Cookies</h2>
+        <p>Diese Website verwendet keine eigenen Cookies. Durch eingebettete Inhalte oder Affiliate-Links können jedoch Cookies von Drittanbietern gesetzt werden. Du kannst deinen Browser so einstellen, dass du über das Setzen von Cookies informiert wirst und Cookies nur im Einzelfall erlaubst.</p>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-white mb-2">6. Externe Dienste</h2>
+        <p>Wir verwenden Google Fonts für die Darstellung von Schriften. Beim Aufruf unserer Website wird eine Verbindung zu Google-Servern hergestellt, um die Schriftarten zu laden. Dabei kann deine IP-Adresse an Google übermittelt werden. Weitere Informationen findest du in der Datenschutzerklärung von Google.</p>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-white mb-2">7. Deine Rechte</h2>
+        <p>Du hast das Recht auf Auskunft über die bei uns gespeicherten personenbezogenen Daten, auf Berichtigung unrichtiger Daten, auf Löschung, auf Einschränkung der Verarbeitung sowie auf Datenübertragbarkeit. Bei Fragen zur Erhebung, Verarbeitung oder Nutzung deiner personenbezogenen Daten kannst du dich jederzeit an uns wenden: info [at] filedesign.com</p>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-white mb-2">8. Änderungen</h2>
+        <p>Wir behalten uns vor, diese Datenschutzerklärung jederzeit anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen. Für deinen erneuten Besuch gilt dann die neue Datenschutzerklärung.</p>
+        <p class="mt-2 text-gray-500">Stand: März 2026</p>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
